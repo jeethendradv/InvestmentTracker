@@ -1,0 +1,37 @@
+﻿@model InvestmentTracker.Web.Models.SearchResults
+@{
+    ViewBag.Title = "Search results";
+}
+
+<h2>Search results</h2>
+<hr />
+@Html.Partial("SearchForm", Model.Search)
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Scheme Code</th>
+            <th scope="col">Fund Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Nav Price</th>
+            <th scope="col">Repurchase Price</th>
+            <th scope="col">Sale Price</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var fund in Model.Funds)
+        {
+            <tr>
+
+                <td>@fund.scheme_code</td>
+                <td>@fund.scheme_name</td>
+                <td>@fund.date</td>
+                <td>@fund.nav</td>
+                <td>@fund.repurchase_price</td>
+                <td>@fund.sale_price</td>
+                <td>@Html.ActionLink("Add", "Add", new { schemecode = fund.scheme_code, schemename = fund.scheme_name })</td>
+            </tr>
+        }
+    </tbody>
+</table>

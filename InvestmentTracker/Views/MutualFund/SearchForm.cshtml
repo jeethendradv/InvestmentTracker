@@ -1,0 +1,15 @@
+﻿@model InvestmentTracker.Web.Models.SearchViewModel
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        @using (Html.BeginForm("Search", "MutualFund", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(x => x.Text, new { @class = "form-control", placeholder = "Enter the mutual fund name" })
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        }
+    </div>
+    <div class="col-lg-3"></div>
+</div>
