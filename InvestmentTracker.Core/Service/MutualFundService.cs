@@ -28,13 +28,17 @@ namespace InvestmentTracker.Core.Service
                 var funds = context.FundPurchased.ToList();
                 var fundgroups = funds.GroupBy(x => x.SchemeCode);
                 MutualFundProxy proxy = new MutualFundProxy();
+                CurrencyConverter currencyConverter = new CurrencyConverter();
                 FundPriceCalculator calculator = new FundPriceCalculator();
                 foreach (var group in fundgroups)
                 {
                     var latestPrice = await FetchLatestNavPrice(group.Key);
                     foreach (var fund in group)
                     {
-                        fundInfo.Add(calculator.Calculate(latestPrice, fund));
+                        var info = calculator.Calculate(latestPrice, fund);
+                        info.AmountInvestedInNZD = await currencyConverter.ConvertAsync(Currency.INR, Currency.NZD, info.AmountInvested);
+                        info.CurrentValueInNZD = await currencyConverter.ConvertAsync(Currency.INR, Currency.NZD, info.CurrentValue);
+                        fundInfo.Add(info);
                     }
                 }
             }

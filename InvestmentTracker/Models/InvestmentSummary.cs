@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace InvestmentTracker.Web.Models
 {
@@ -22,11 +21,27 @@ namespace InvestmentTracker.Web.Models
             }
         }
 
+        public decimal TotalInvestedInNZD
+        {
+            get
+            {
+                return Round(_funds.Sum(x => x.AmountInvestedInNZD));
+            }
+        }
+
         public decimal TotalCurrentValue
         {
             get
             {
                 return Round(_funds.Sum(x => x.CurrentValue));
+            }
+        }
+
+        public decimal TotalCurrentValueInNZD
+        {
+            get
+            {
+                return Round(_funds.Sum(x => x.CurrentValueInNZD));
             }
         }
 
@@ -56,7 +71,7 @@ namespace InvestmentTracker.Web.Models
 
         private decimal Round(decimal price)
         {
-            return Math.Round(price, 4);
+            return Math.Round(price, 2);
         }
     }
 }

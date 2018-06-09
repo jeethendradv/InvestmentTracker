@@ -1,0 +1,26 @@
+﻿@model InvestmentTracker.Web.Models.InvestmentSummary
+@using InvestmentTracker.Core.Extensions;
+
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th colspan="4" class="text-center">
+                <h4>Investment Summary</h4>
+            </th>
+        </tr>
+        <tr>
+            <th>Total Invested</th>
+            <th>Total Value</th>
+            <th>Profit/Loss</th>
+            <th>Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.TotalInvested.ToIndianMoneyFormat() | NZD @(Model.TotalInvestedInNZD)</td>
+            <td>@Model.TotalCurrentValue.ToIndianMoneyFormat() | NZD @(Model.TotalCurrentValueInNZD)</td>
+            <td><span class="@(Model.IsInProfit? "btn-success": "btn-danger")">@Model.ProfitLoss.ToIndianMoneyFormat()</span></td>
+            <td><span class="@(Model.IsInProfit? "btn-success": "btn-danger")">@Model.Percentage %</span></td>
+        </tr>
+    </tbody>
+</table>

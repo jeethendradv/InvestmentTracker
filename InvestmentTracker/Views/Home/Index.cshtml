@@ -1,64 +1,16 @@
 ﻿@model List<InvestmentTracker.Core.DataObj.FundInfo>
 @using InvestmentTracker.Web.Models;
-@using InvestmentTracker.Core.Extensions;
 @{
     ViewBag.Title = "Investment Tracker";
 }
 <br />
-<br />
-
 @{
     var groups = Model.GroupBy(x => x.SchemeCode);
     InvestmentSummary summary = new InvestmentSummary(Model);
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Total Invested</th>
-            <th>Total Value</th>
-            <th>Profit/Loss</th>
-            <th>Percentage</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>@summary.TotalInvested.ToIndianMoneyFormat()</td>
-            <td>@summary.TotalCurrentValue.ToIndianMoneyFormat()</td>
-            <td><span class="@(summary.IsInProfit? "btn-success": "btn-danger")">@summary.ProfitLoss.ToIndianMoneyFormat()</span></td>
-            <td><span class="@(summary.IsInProfit? "btn-success": "btn-danger")">@summary.Percentage %</span></td>
-        </tr>
-    </tbody>
-</table>
-<br />
+@Html.Partial("InvestmentSummary", summary)
 @foreach (var group in groups)
 {
-    <div>
-        @group.First().Name
-    </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Purchase Date</th>
-                <th scope="col">Purchase Price</th>
-                <th scope="col">Invested Amount</th>
-                <th scope="col">Current Price</th>
-                <th scope="col">Current Value</th>
-                <th scope="col">Profit/Loss</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var fund in group)
-            {
-                <tr>
-                    <td>@fund.PurchaseDate.ToShortDateString()</td>
-                    <td>@fund.NavPurchasePrice.ToIndianMoneyFormat()</td>
-                    <td>@fund.AmountInvested.ToIndianMoneyFormat()</td>
-                    <td>@fund.NavCurrentPrice.ToIndianMoneyFormat()</td>
-                    <td>@fund.CurrentValue.ToIndianMoneyFormat()</td>
-                    <td><span class="@(summary.IsInProfit? "btn-success": "btn-danger")">@fund.ProfitValue.ToIndianMoneyFormat()</span></td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @Html.Partial("FundInfo", group.ToList())
 }
