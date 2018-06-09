@@ -14,7 +14,7 @@ namespace InvestmentTracker.Core.Service
             using (var context = new InvestmentTrackerDbContext())
             {
                 MutualFundProxy proxy = new MutualFundProxy();
-                fund.NavPurchasePrice = await proxy.GetPrice(fund.SchemeCode, fund.PurchaseDate);
+                fund.NavPurchasePrice = await proxy.GetPrice(fund.SchemeCode, fund.PurchaseDate);                
                 context.FundPurchased.Add(fund);
                 context.SaveChanges();
             }
@@ -36,6 +36,7 @@ namespace InvestmentTracker.Core.Service
                     foreach (var fund in group)
                     {
                         var info = calculator.Calculate(latestPrice, fund);
+                        info.IsReinvestedAmount = fund.IsReinvestedAmount ?? false;
                         info.AmountInvestedInNZD = await currencyConverter.ConvertAsync(Currency.INR, Currency.NZD, info.AmountInvested);
                         info.CurrentValueInNZD = await currencyConverter.ConvertAsync(Currency.INR, Currency.NZD, info.CurrentValue);
                         fundInfo.Add(info);
@@ -43,7 +44,7 @@ namespace InvestmentTracker.Core.Service
                 }
             }
             return fundInfo;
-        }
+        }        
 
         private async Task<decimal> FetchLatestNavPrice(string schemecode)
         {

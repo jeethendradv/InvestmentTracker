@@ -24,5 +24,8 @@ namespace InvestmentTracker.Core.Entities
 
         [Display(Name="Amount Invested")]
         public decimal? AmountInvested { get; set; }
+
+        [Display(Name="Is Reinvested amount")]
+        public bool? IsReinvestedAmount { get; set; }
     }
 }

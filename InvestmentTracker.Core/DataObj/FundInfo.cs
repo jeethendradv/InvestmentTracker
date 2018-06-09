@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InvestmentTracker.Core.DataObj
 {
@@ -20,6 +16,7 @@ namespace InvestmentTracker.Core.DataObj
         public decimal CurrentValueInNZD { get; set; }
         public decimal ProfitValue { get; set; }
         public decimal Percentage { get; set; }
+        public bool IsReinvestedAmount { get; set; }
         public bool IsInProfit
         {
             get

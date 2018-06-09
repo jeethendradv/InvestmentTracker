@@ -1,0 +1,53 @@
+﻿@model InvestmentTracker.Core.Entities.FundPurchased
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+<hr />
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-8">
+        @using (Html.BeginForm("OneTimeInvestment", "MutualFund", FormMethod.Post))
+    {
+        <div class="form-group row">
+            <label for="SchemeCode" class="col-sm-3 col-form-label">@Html.DisplayNameFor(x => x.SchemeCode)</label>
+            <div class="col-sm-7">
+                <input type="text" name="SchemeCode" readonly class="form-control" id="SchemeCode" value="@Html.DisplayTextFor(x => x.SchemeCode)">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Name" class="col-sm-3 col-form-label">@Html.DisplayNameFor(x => x.Name)</label>
+            <div class="col-sm-9">
+                <input type="text" readonly class="form-control" id="Name" name="Name" value="@Html.DisplayTextFor(x => x.Name)" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Name" class="col-sm-3 col-form-label">@Html.DisplayNameFor(x => x.PurchaseDate)</label>
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.PurchaseDate, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Name" class="col-sm-3 col-form-label">@Html.DisplayNameFor(x => x.NavsPurchased)</label>
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.NavsPurchased, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Name" class="col-sm-3 col-form-label">@Html.DisplayNameFor(x => x.AmountInvested)</label>
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.AmountInvested, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Name" class="col-sm-3 col-form-label">@Html.DisplayNameFor(x => x.IsReinvestedAmount)</label>
+            <div class="col-sm-9">
+                @Html.EditorFor(x => x.IsReinvestedAmount, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+}
+    </div>
+    <div class="col-lg-1"></div>
+</div>

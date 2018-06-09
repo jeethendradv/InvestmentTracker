@@ -12,5 +12,6 @@ namespace InvestmentTracker.Web.Models
         public DateTime NavPurchaseDate { get; set; }
         public int NavsPurchased { get; set; }
         public decimal AmountInvested { get; set; }
+        public bool IsReinvestedAmount { get; set; }
     }
 }

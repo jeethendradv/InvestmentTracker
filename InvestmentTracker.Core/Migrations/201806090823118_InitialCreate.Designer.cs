@@ -13,7 +13,7 @@ namespace InvestmentTracker.Core.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201806020823292_InitialCreate"; }
+            get { return "201806090823118_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -57,14 +57,15 @@
     <Compile Include="DataObj\FundData.cs" />
     <Compile Include="DataObj\FundInfo.cs" />
     <Compile Include="DataObj\NavHistory.cs" />
+    <Compile Include="Entities\CurrencyPrice.cs" />
     <Compile Include="Extensions\DateTimeExtension.cs" />
     <Compile Include="Entities\FundPurchased.cs" />
     <Compile Include="Entities\LatestNavPrice.cs" />
     <Compile Include="Extensions\DecimalExtension.cs" />
     <Compile Include="InvestmentTrackerDbContext.cs" />
-    <Compile Include="Migrations\201806020823292_InitialCreate.cs" />
-    <Compile Include="Migrations\201806020823292_InitialCreate.Designer.cs">
-      <DependentUpon>201806020823292_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201806090823118_InitialCreate.cs" />
+    <Compile Include="Migrations\201806090823118_InitialCreate.Designer.cs">
+      <DependentUpon>201806090823118_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MutualFundProxy.cs" />
@@ -78,10 +79,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806020823292_InitialCreate.resx">
-      <DependentUpon>201806020823292_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806090823118_InitialCreate.resx">
+      <DependentUpon>201806090823118_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

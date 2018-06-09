@@ -30,7 +30,7 @@
                 <td>@fund.nav</td>
                 <td>@fund.repurchase_price</td>
                 <td>@fund.sale_price</td>
-                <td>@Html.ActionLink("Add", "Add", new { schemecode = fund.scheme_code, schemename = fund.scheme_name })</td>
+                <td>@Html.ActionLink("One time investment", "OneTimeInvestment", new { schemecode = fund.scheme_code, schemename = fund.scheme_name })</td>
             </tr>
         }
     </tbody>

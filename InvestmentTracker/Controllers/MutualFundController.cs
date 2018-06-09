@@ -29,7 +29,7 @@ namespace InvestmentTracker.Web.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Add(string schemecode, string schemename)
+        public ActionResult OneTimeInvestment(string schemecode, string schemename)
         {
             FundPurchased fund = new FundPurchased
             {
@@ -40,7 +40,7 @@ namespace InvestmentTracker.Web.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult> Add(FundPurchased fund)
+        public async Task<ActionResult> OneTimeInvestment(FundPurchased fund)
         {
             MutualFundService service = new MutualFundService();
             await service.Add(fund);

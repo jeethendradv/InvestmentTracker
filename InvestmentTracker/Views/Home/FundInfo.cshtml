@@ -11,6 +11,7 @@
         <tr>
             <th scope="col">Purchase Date</th>
             <th scope="col">Purchase Price</th>
+            <th scope="col">Navs</th>
             <th scope="col">Invested Amount</th>
             <th scope="col">Current Price</th>
             <th scope="col">Current Value</th>
@@ -24,6 +25,7 @@
             <tr>
                 <td>@fund.PurchaseDate.ToShortDateString()</td>
                 <td>@fund.NavPurchasePrice.ToIndianMoneyFormat()</td>
+                <td>@fund.NavsPurchased</td>
                 <td>@fund.AmountInvested.ToIndianMoneyFormat()</td>
                 <td>@fund.NavCurrentPrice.ToIndianMoneyFormat()</td>
                 <td>@fund.CurrentValue.ToIndianMoneyFormat()</td>

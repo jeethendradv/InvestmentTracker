@@ -234,7 +234,7 @@
     <Content Include="Views\MutualFund\Index.cshtml" />
     <Content Include="Views\MutualFund\Search.cshtml" />
     <Content Include="Views\MutualFund\SearchForm.cshtml" />
-    <Content Include="Views\MutualFund\Add.cshtml" />
+    <Content Include="Views\MutualFund\OneTimeInvestment.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />

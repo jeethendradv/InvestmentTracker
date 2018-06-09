@@ -8,6 +8,18 @@ namespace InvestmentTracker.Core.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.CurrencyPrices",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        From = c.String(),
+                        To = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 4),
+                        LastUpdated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.FundPurchaseds",
                 c => new
                     {
@@ -18,6 +30,7 @@ namespace InvestmentTracker.Core.Migrations
                         PurchaseDate = c.DateTime(nullable: false),
                         NavsPurchased = c.Decimal(precision: 18, scale: 4),
                         AmountInvested = c.Decimal(precision: 18, scale: 4),
+                        IsReinvestedAmount = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -39,6 +52,7 @@ namespace InvestmentTracker.Core.Migrations
         {
             DropTable("dbo.LatestNavPrices");
             DropTable("dbo.FundPurchaseds");
+            DropTable("dbo.CurrencyPrices");
         }
     }
 }

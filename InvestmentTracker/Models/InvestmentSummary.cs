@@ -17,7 +17,7 @@ namespace InvestmentTracker.Web.Models
         {
             get
             {
-                return Round(_funds.Sum(x => x.AmountInvested));
+                return Round(_funds.Where(x => !x.IsReinvestedAmount).Sum(x => x.AmountInvested));
             }
         }
 
@@ -25,7 +25,7 @@ namespace InvestmentTracker.Web.Models
         {
             get
             {
-                return Round(_funds.Sum(x => x.AmountInvestedInNZD));
+                return Round(_funds.Where(x => !x.IsReinvestedAmount).Sum(x => x.AmountInvestedInNZD));
             }
         }
 
@@ -57,7 +57,8 @@ namespace InvestmentTracker.Web.Models
         {
             get
             {
-                return Round((ProfitLoss / TotalInvested) * 100);
+                return ProfitLoss > 0 && TotalInvested > 0 ?
+                Round((ProfitLoss / TotalInvested) * 100) : 0;
             }
         }
 
